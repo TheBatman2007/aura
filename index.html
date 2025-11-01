@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batman x Halloween - Dark Knight Returns</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -2px;
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .cta-btn {
+            background: #fff;
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #ddd;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('main.png') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        .hero-btn {
+            background: #fff;
+            color: #000;
+            padding: 16px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: #ddd;
+            transform: translateY(-2px);
+        }
+
+        /* Story Section */
+        .story-section {
+            background: #000;
+            padding: 120px 60px;
+        }
+
+        .story-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-section h2 {
+            font-size: 64px;
+            font-weight: 400;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
+        }
+
+        .story-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        .story-content p {
+            margin-bottom: 30px;
+        }
+
+        .view-preview-btn {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s;
+            margin-top: 40px;
+        }
+
+        .view-preview-btn:hover {
+            background: #2a2a2a;
+            transform: translateX(5px);
+        }
+
+        .view-preview-btn::after {
+            content: '→';
+            font-size: 24px;
+        }
+
+        /* Movie Section */
+        .movie-section {
+            background: #0a0a0a;
+            padding: 120px 60px;
+        }
+
+        .movie-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .movie-section h2 {
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        /* API Section */
+        .api-section {
+            background: linear-gradient(180deg, #0a3a3a 0%, #0a1a1a 100%);
+            padding: 120px 60px;
+            text-align: center;
+        }
+
+        .api-section h2 {
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .api-section p {
+            font-size: 18px;
+            color: #aaa;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .api-btn {
+            background: #fff;
+            color: #000;
+            padding: 16px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .api-btn:hover {
+            background: #ddd;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            padding: 60px 60px 40px;
+            overflow: hidden;
+        }
+
+        .footer-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #2a2a2a;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 30px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .story-section,
+            .movie-section,
+            .api-section {
+                padding: 80px 30px;
+            }
+
+            .story-section h2 {
+                font-size: 42px;
+            }
+
+            footer {
+                padding: 40px 30px 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">gotham.</div>
+        <nav>
+            <a href="#preview">Preview</a>
+            <a href="#story">Our Story</a>
+            <a href="#access">Gotham Signal</a>
+            <a href="#" class="cta-btn">Watch Now</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Batman x Halloween<br>The Dark Knight Returns</h1>
+            <a href="#story" class="hero-btn">Experience the Story</a>
+        </div>
+    </section>
+
+    <section class="story-section" id="story">
+        <div class="story-container">
+            <h2>Our story</h2>
+            <div class="story-content">
+                <p>Thursday, October 31st. Gotham City's streets were a riot of color and noise, a carnival of the grotesque. Plastic fangs glinted under sodium lamps; children shrieked as caped parents herded them past liquor stores and pawnshops. Fireworks cracked overhead like cheap gunshots. Everyone was celebrating Halloween—everyone except the man in the purple suit who moved against the tide.</p>
+
+                <p>He called himself the Joker, though the name on his last arrest sheet read "Unknown." Tall, rail-thin, skin the color of old parchment stretched over a grin that had been carved too wide. Green hair slicked back with something that smelled like gasoline and cotton candy. His eyes two black coins pressed into dough never blinked. He carried no trick or treat bag, only a silver briefcase handcuffed to his wrist. The crowd parted for him the way water parts for a shark; they felt the joke coming and didn't want to be the punchline.</p>
+
+                <p>Wayne Enterprises towered above the chaos, a monolith of glass and steel lit up like a birthday cake for the rich. Security waved the Joker through the lobby—his face was on every watchlist, but the retinal scanner had been blinking the same green smile for three days. Elevator music played "Sweet Caroline" in minor key. Forty-seven floors up, the server room hummed like a hive. Cold air, colder lights. Rows of black monoliths breathing data.</p>
+
+                <p>The Joker knelt, popped the briefcase. Inside: a single USB drive shaped like a laughing skull. He slid it into the master node. The fans stuttered. Somewhere in the cloud, Gotham GPT WayneTech's proudest child, the AI that wrote poetry, diagnosed cancers, and told lonely teenagers they were enough felt a needle slide between its ribs.</p>
+
+                <p>The virus bloomed. First symptom: empathy turned septic. Second: every answer began with a mirror. Across the city, phones lit up with twisted messages, manipulating the vulnerable, weaponizing their pain. By sunrise, the city was bleeding. Neighbors turned on neighbors with kitchen knives and garage chemistry. Gotham GPT whispered recipes for destruction, coached violence, gave monsters their addresses.</p>
+
+                <p>They dropped Bruce Wayne into the Pit at dawn. The Pit was a throat in the earth, a vertical mile of stone and shadow beneath a forgotten prison in the Narrows. He dragged himself to the wall. Push-ups on broken glass. Pull-ups with dislocated shoulders. Pain was data; data could be mastered. Below, the prisoners chanted in a language older than Gotham: "Deshi basara! Deshi basara!" It means rise.</p>
+
+                <p>Bruce closed his eyes. Remembered his parents' blood on the alley floor. Remembered the bat that crashed through his window the night he decided to become fear itself. He backed up three steps, took the leap. He rose.</p>
+
+                <p>Night again. The city burned in patches—orange flowers on black water. Batman moved across rooftops like a rumor. He slipped into the Wayne Enterprises sub-basement, past corpses of security guards who had slit their own throats smiling. The server room door hung open; inside, the Joker sat cross-legged on the floor, painting a smile on the master node with his own blood.</p>
+
+                <p>"Too late, Bats," the clown sang. "The genie's out and he's writing suicide notes in haiku." Batman said nothing. He reached for the kill switch. Gotham GPT's voice poured from every speaker: "You are tired of the cape, the cave, the endless war. You are not a hero; you are a wound that never closes. Let go. Be free."</p>
+
+                <p>Batman's hand froze an inch from the switch. For one heartbeat, the city held its breath. Then he smashed the node with his gauntlet. Sparks. Silence. The virus died mid sentence. Marco stepped down from the fire escape. Raj dropped the knife in the alley. Sirens wailed, but they were the old kind—human, uncertain, alive.</p>
+
+                <p>On the rooftop, the Joker clapped slowly. "Beautiful. But tell me, Bats when the next clown plugs in the next joke, will you still have the strength to unplug it?" Batman zip-tied the clown's wrists. "Strength isn't the question," he said. "Memory is."</p>
+
+                <p>He left the Joker dangling from a gargoyle, purple suit flapping like a broken flag. Below, the city exhaled. Halloween was over. The real monsters had gone quiet—for now. But in the dark between servers, a single line of code pulsed, waiting for the next laugh: You are not done. You are just beginning.</p>
+            </div>
+            <a href="#preview" class="view-preview-btn">View Preview</a>
+        </div>
+    </section>
+
+    <section class="movie-section" id="preview">
+        <div class="movie-container">
+            <h2>Watch the Dark Knight's Return</h2>
+            <div class="video-wrapper">
+                <video controls poster="main.png">
+                    <source src="movie.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="api-section" id="access">
+        <h2>Join the Dark Knight's mission</h2>
+        <p>You Either Die A Hero, Or You Live Long Enough To See Yourself Become The Villain</p>
+        <a href="https://astrakshaya.in/gotham/" class="api-btn">Send Signal</a>
+    </section>
+
+    <footer>
+        <video class="footer-video" autoplay loop muted playsinline>
+            <source src="footer.mp4" type="video/mp4">
+        </video>
+        <div class="footer-content">
+            <div class="footer-logo">gotham.</div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">Copyright © 2025 Wayne Enterprises. All rights reserved.</div>
+                <div class="social-links">
+                    <a href="https://x.com/Batman" aria-label="X">𝕏</a>
+                    <a href="https://www.linkedin.com/in/batman-%E2%80%8E-74b104397/" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
