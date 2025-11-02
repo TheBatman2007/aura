@@ -130,10 +130,21 @@
             transform: translateY(-2px);
         }
 
+        /* Startup Section */
+        .startup-section {
+            background: #000;
+            padding: 120px 60px 60px;
+        }
+
+        .startup-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
         /* Story Section */
         .story-section {
             background: #000;
-            padding: 120px 60px;
+            padding: 60px 60px 120px;
         }
 
         .story-container {
@@ -353,6 +364,7 @@
             }
 
             .story-section,
+            .startup-section,
             .movie-section,
             .api-section {
                 padding: 80px 30px;
@@ -388,6 +400,17 @@
         <div class="hero-content">
             <h1>Batman x Halloween<br>The Dark Knight Returns</h1>
             <a href="#story" class="hero-btn">Experience the Story</a>
+        </div>
+    </section>
+
+    <section class="startup-section">
+        <div class="startup-container">
+            <div class="video-wrapper">
+                <video controls poster="stf (1).png">
+                    <source src="startup.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
     </section>
 
