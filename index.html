@@ -19,6 +19,46 @@
             overflow-x: hidden;
         }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #444, #222);
+            border-radius: 10px;
+            border: 2px solid #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #666, #333);
+        }
+
+        /* Chat Area Custom Scrollbar */
+        .chat-area::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .chat-area::-webkit-scrollbar-track {
+            background: #0a0a0a;
+            border-radius: 10px;
+        }
+
+        .chat-area::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #555, #2a2a2a);
+            border-radius: 10px;
+            border: 2px solid #0a0a0a;
+        }
+
+        .chat-area::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #777, #444);
+        }
+
         /* Header */
         header {
             position: fixed;
@@ -67,11 +107,169 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Georgia', serif;
         }
 
         .cta-btn:hover {
             background: #ddd;
             transform: translateY(-2px);
+        }
+
+        /* Chatbot Modal */
+        .chat-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-modal.active {
+            display: flex;
+        }
+
+        .chat-container {
+            background: #1a1a1a;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 800px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .chat-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h2 {
+            font-size: 24px;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        .close-chat {
+            background: transparent;
+            border: none;
+            color: #888;
+            font-size: 32px;
+            cursor: pointer;
+            transition: color 0.3s;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-chat:hover {
+            color: #fff;
+        }
+
+        .chat-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+            background: #0a0a0a;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            max-width: 80%;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .message-user {
+            background: #fff;
+            color: #000;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .message-bot {
+            background: #2a2a2a;
+            color: #fff;
+        }
+
+        .message-bot.typing {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .error {
+            background: #ff4444;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .chat-input-area {
+            padding: 20px 30px;
+            border-top: 1px solid #333;
+            display: flex;
+            gap: 15px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Georgia', serif;
+        }
+
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: #555;
+        }
+
+        .chat-input-area button {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Georgia', serif;
+        }
+
+        .chat-input-area button:hover:not(:disabled) {
+            background: #ddd;
+            transform: translateY(-2px);
+        }
+
+        .chat-input-area button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         /* Hero Section */
@@ -93,7 +291,7 @@
             right: 0;
             bottom: 0;
             background: url('main.png') center/cover no-repeat;
-            opacity: 0.3;
+            opacity: 0.4;
             z-index: 0;
         }
 
@@ -114,7 +312,7 @@
         }
 
         .hero-btn {
-            background: #fff;
+            background: #ffffff;
             color: #000;
             padding: 16px 50px;
             border-radius: 8px;
@@ -123,6 +321,9 @@
             font-weight: 500;
             display: inline-block;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
         }
 
         .hero-btn:hover {
@@ -382,6 +583,15 @@
                 flex-direction: column;
                 gap: 20px;
             }
+
+            .chat-container {
+                width: 95%;
+                height: 90vh;
+            }
+
+            .message {
+                max-width: 90%;
+            }
         }
     </style>
 </head>
@@ -392,14 +602,29 @@
             <a href="#preview">Preview</a>
             <a href="#story">Our Story</a>
             <a href="#access">Gotham Signal</a>
-            <a href="#" class="cta-btn">Watch Now</a>
+            <button class="cta-btn" id="openChatBtn">Try Gotham's AI</button>
         </nav>
     </header>
+
+    <!-- Chatbot Modal -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>Gotham GPT</h2>
+                <button class="close-chat" id="closeChatBtn">&times;</button>
+            </div>
+            <div class="chat-area" id="chatArea"></div>
+            <div class="chat-input-area">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+    </div>
 
     <section class="hero">
         <div class="hero-content">
             <h1>Batman x Halloween<br>The Dark Knight Returns</h1>
-            <a href="#story" class="hero-btn">Experience the Story</a>
+            <button class="hero-btn" id="heroGothamBtn">Try Gotham's GPT</button>
         </div>
     </section>
 
@@ -483,5 +708,138 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const API_KEY = "csk-ydtjynrjccwht56t89cfhmf5kx99c88xre48eyd3e5ccm8x8";
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatArea = document.getElementById('chatArea');
+        const chatModal = document.getElementById('chatModal');
+        const openChatBtn = document.getElementById('openChatBtn');
+        const closeChatBtn = document.getElementById('closeChatBtn');
+        const heroGothamBtn = document.getElementById('heroGothamBtn');
+
+        let systemPrompt = "You are a helpful AI assistant.";
+        
+        // Load system prompt from negative.txt
+        fetch('negative.txt')
+            .then(response => response.text())
+            .then(text => {
+                systemPrompt = text;
+                console.log('System prompt loaded from negative.txt');
+            })
+            .catch(error => {
+                console.error('Could not load negative.txt, using default prompt:', error);
+            });
+
+        // Chat modal controls
+        openChatBtn.addEventListener('click', () => {
+            chatModal.classList.add('active');
+            userInput.focus();
+        });
+
+        heroGothamBtn.addEventListener('click', () => {
+            chatModal.classList.add('active');
+            userInput.focus();
+        });
+
+        closeChatBtn.addEventListener('click', () => {
+            chatModal.classList.remove('active');
+        });
+
+        chatModal.addEventListener('click', (e) => {
+            if (e.target === chatModal) {
+                chatModal.classList.remove('active');
+            }
+        });
+
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !sendBtn.disabled) {
+                sendMessage();
+            }
+        });
+
+        sendBtn.addEventListener('click', sendMessage);
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+
+            if (!message) return;
+
+            addMessage(message, 'user');
+            userInput.value = '';
+            sendBtn.disabled = true;
+            userInput.disabled = true;
+
+            const typingDiv = addTypingIndicator();
+
+            try {
+                const response = await fetch('https://api.cerebras.ai/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: 'llama-3.3-70b',
+                        messages: [
+                            { role: 'system', content: systemPrompt },
+                            { role: 'user', content: message }
+                        ],
+                        max_completion_tokens: 2000,
+                        temperature: 0.7,
+                        top_p: 0.8,
+                        stream: false
+                    })
+                });
+
+                typingDiv.remove();
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const botMessage = data.choices[0].message.content;
+                addMessage(botMessage, 'bot');
+
+            } catch (error) {
+                typingDiv.remove();
+                addError(error.message);
+            }
+
+            sendBtn.disabled = false;
+            userInput.disabled = false;
+            userInput.focus();
+        }
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message message-${sender}`;
+            messageDiv.textContent = text;
+            
+            chatArea.appendChild(messageDiv);
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+
+        function addTypingIndicator() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message message-bot typing';
+            messageDiv.textContent = 'Processing';
+            
+            chatArea.appendChild(messageDiv);
+            chatArea.scrollTop = chatArea.scrollHeight;
+            
+            return messageDiv;
+        }
+
+        function addError(text) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = text;
+            chatArea.appendChild(errorDiv);
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+    </script>
 </body>
 </html>
